@@ -1,0 +1,31 @@
+{
+  "name": "commando-provider-mongo",
+  "version": "1.0.0",
+  "description": "A MongoDB provider for Commando",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ItsDizzy/commando-provider-mongo.git"
+  },
+  "keywords": [
+    "discord.js",
+    "commando",
+    "discord.js-commando",
+    "provider",
+    "mongodb",
+    "settings"
+  ],
+  "author": "Dizzy <itsdizzy40@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ItsDizzy/commando-provider-mongo/issues"
+  },
+  "homepage": "https://github.com/ItsDizzy/commando-provider-mongo#readme",
+  "peerDependencies": {
+    "discord.js-commando": "^0.9.0",
+    "mongodb": "^2.2.31"
+  }
+}
