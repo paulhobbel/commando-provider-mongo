@@ -23,7 +23,7 @@ const MongoDBProvider = require('commando-provider-mongo');
 ...
 
 client.setProvider(
-	MongoClient.connect('mongodb://localhost:27017/abot').then(db => new MongoDBProvider(db))
+	MongoClient.connect('mongodb://localhost:27017').then(client => new MongoDBProvider(client, 'abot'))
 ).catch(console.error);
 
 ...

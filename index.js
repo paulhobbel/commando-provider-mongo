@@ -7,16 +7,17 @@ const SettingProvider = require('discord.js-commando').SettingProvider;
 class MongoDBProvider extends SettingProvider {
 
 	/**
-	 * @param {Db} db - Database for the provider
+	 * @param {MongoClient} client - Database for the provider
+	 * @param {string} dbName - The database name
 	 */
-	constructor(db) {
+	constructor(client, dbName) {
 		super();
 
 		/**
 		 * Database that will be used for storing/retrieving settings
 		 * @type {Db}
 		 */
-		this.db = db;
+		this.db = client.db(dbName);
 
 		/**
 		 * Client that the provider is for (set once the client is ready, after using {@link CommandoClient#setProvider})
