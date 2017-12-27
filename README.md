@@ -1,5 +1,9 @@
 # Commando MongoDBProvider
-A MongoDB provider for Commando
+[![Downloads](https://img.shields.io/npm/dt/commando-provider-mongo.svg)](https://www.npmjs.com/package/commando-provider-mongo)
+[![Version](https://img.shields.io/npm/v/commando-provider-mongo.svg)](https://www.npmjs.com/package/commando-provider-mongo)
+[![Dependency status](https://david-dm.org/ItsDizzy/commando-provider-mongo.svg)](https://david-dm.org/ItsDizzy/commando-provider-mongo)
+
+ MongoDB provider for Commando
 
 ## About
 [Commando](https://github.com/Gawdl3y/discord.js-commando) is the official framework for [discord.js](https://github.com/hydrabolt/discord.js), I like how easy it is to get started with it and add own commands, types, etc. Recently I started working on a bot that required to be connected to MongoDB. I converted the default SQLLiteProvider into a provider that could use MongoDB as storage.
