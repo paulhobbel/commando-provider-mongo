@@ -141,7 +141,7 @@ class MongoDBProvider extends SettingProvider {
         guild = guild !== 'global' ? guild : 0;
 
         const collection = await this.db.collection('settings');
-        return collection.updateOne({ guild }, { guild, settings }, { upsert: true });
+        return collection.updateOne({ guild }, { $set: { guild, settings } }, { upsert: true });
     }
 
 	/**
