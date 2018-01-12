@@ -12,10 +12,10 @@
 >If you want to use node-mongodb-native@2.2, use commando-provider-mongo@1.0.0!
 ```bash
 # With Yarn (recommended)
-yarn add mongodb commando-provider-mongo
+yarn add mongodb commando-provider-mongo@dev
 
 # With NPM
-npm install --save mongodb commando-provider-mongo
+npm install --save mongodb commando-provider-mongo@dev
 ```
 
 ## Usage
