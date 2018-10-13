@@ -9,14 +9,15 @@ class MongoDBProvider extends SettingProvider {
 	/**
 	 * @param {Db} db - Database for the provider
 	 */
-	constructor(db) {
+	constructor(mongoClient, dbName) {
 		super();
 
 		/**
 		 * Database that will be used for storing/retrieving settings
 		 * @type {Db}
 		 */
-		this.db = db;
+		this.mongoClient = mongoClient;
+		this.db = mongoClient.db(dbName);
 
 		/**
 		 * Client that the provider is for (set once the client is ready, after using {@link CommandoClient#setProvider})
@@ -85,7 +86,7 @@ class MongoDBProvider extends SettingProvider {
 
 	async destroy() {
 		// Close database connection
-		this.db.close();
+		this.mongoClient.close();
 
 		// Remove all listeners from the client
 		for (const [event, listener] of this.listeners) this.client.removeListener(event, listener);

@@ -19,7 +19,7 @@ npm install --save mongodb commando-provider-mongo@dev
 ```
 
 ## Usage
-Below is an example on how to use it with [node-mongodb-native](https://github.com/mongodb/node-mongodb-native) (recommended). There are probably other mongodb clients whose are able to return a Db instance of MongoClient and you are free to use them. However I will not deliver any support if you use another client. 
+Below is an example on how to use it with [node-mongodb-native](https://github.com/mongodb/node-mongodb-native) (recommended). There are probably other mongodb clients whose are able to return a Db instance of MongoClient and you are free to use them. However I will not deliver any support if you use another client.
 
 ```js
 const MongoClient = require('mongodb').MongoClient;
@@ -28,7 +28,7 @@ const MongoDBProvider = require('commando-provider-mongo');
 ...
 
 client.setProvider(
-	MongoClient.connect('mongodb://localhost:27017').then(client => new MongoDBProvider(client.db('abot')))
+	MongoClient.connect('mongodb://localhost:27017').then(client => new MongoDBProvider(client, 'abot'))
 ).catch(console.error);
 
 ...
