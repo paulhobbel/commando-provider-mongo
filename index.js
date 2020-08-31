@@ -54,7 +54,7 @@ class MongoDBProvider extends SettingProvider {
 			this.settings.set(guild, doc.settings);
 
 			// Guild is not global, and doesn't exist currently so lets skip it.
-			if (guild !== 'global' && !client.guilds.has(doc.guild)) return;
+			if (guild !== 'global' && !client.guilds.cache.has(doc.guild)) return;
 
 			this.setupGuild(guild, doc.settings);
 		});
@@ -71,14 +71,14 @@ class MongoDBProvider extends SettingProvider {
 			})
 			.set('commandRegister', command => {
 				for (const [guild, settings] of this.settings) {
-					if (guild !== 'global' && !client.guilds.has(guild)) continue;
-					this.setupGuildCommand(client.guilds.get(guild), command, settings);
+					if (guild !== 'global' && !client.guilds.cache.has(guild)) continue;
+					this.setupGuildCommand(client.guilds.cache.get(guild), command, settings);
 				}
 			})
 			.set('groupRegister', group => {
 				for (const [guild, settings] of this.settings) {
-					if (guild !== 'global' && !client.guilds.has(guild)) continue;
-					this.setupGuildGroup(client.guilds.get(guild), group, settings);
+					if (guild !== 'global' && !client.guilds.cache.has(guild)) continue;
+					this.setupGuildGroup(client.guilds.cache.get(guild), group, settings);
 				}
 			});
 		for (const [event, listener] of this.listeners) client.on(event, listener);
@@ -152,7 +152,7 @@ class MongoDBProvider extends SettingProvider {
 	 */
 	setupGuild(guild, settings) {
 		if (typeof guild !== 'string') throw new TypeError('The guild must be a guild ID or "global".');
-		guild = this.client.guilds.get(guild) || null;
+		guild = this.client.guilds.cache.get(guild) || null;
 
 		// Load the command prefix
 		if (typeof settings.prefix !== 'undefined') {
