@@ -12,14 +12,14 @@
 >If you want to use node-mongodb-native@2.2, use commando-provider-mongo@1.0.0!
 ```bash
 # With Yarn (recommended)
-yarn add mongodb commando-provider-mongo
+yarn add mongodb commando-provider-mongo@dev
 
 # With NPM
-npm install --save mongodb commando-provider-mongo
+npm install --save mongodb commando-provider-mongo@dev
 ```
 
 ## Usage
-Below is an example on how to use it with [node-mongodb-native](https://github.com/mongodb/node-mongodb-native) (recommended). There are probably other mongodb clients whose are able to return a Db instance of MongoClient and you are free to use them. However I will not deliver any support if you use another client. 
+Below is an example on how to use it with [node-mongodb-native](https://github.com/mongodb/node-mongodb-native) (recommended). There are probably other mongodb clients whose are able to return a Db instance of MongoClient and you are free to use them. However I will not deliver any support if you use another client.
 
 ```js
 const MongoClient = require('mongodb').MongoClient;
