@@ -1,3 +1,5 @@
+**This is a fork intended to fix issues with an incompatabiliy between the official commando-provider-mongo package and version 12 of discord.js**
+<br />
 # Commando MongoDBProvider
 [![Downloads](https://img.shields.io/npm/dt/commando-provider-mongo.svg)](https://www.npmjs.com/package/commando-provider-mongo)
 [![Version](https://img.shields.io/npm/v/commando-provider-mongo.svg)](https://www.npmjs.com/package/commando-provider-mongo)
