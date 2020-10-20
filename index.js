@@ -54,7 +54,7 @@ class MongoDBProvider extends SettingProvider {
             this.settings.set(guild, doc.settings);
 
             // Guild is not global, and doesn't exist currently so lets skip it.
-            if(guild !== 'global' && !(client.guilds.cache.has(doc.guild) || client.guilds.has(doc.guild))) return;
+            if(guild !== 'global' && !(client.guilds.cache.has(doc.guild) || client.guilds.cache.has(doc.guild))) return;
 
             this.setupGuild(guild, doc.settings);
         });
@@ -71,13 +71,13 @@ class MongoDBProvider extends SettingProvider {
 			})
 			.set('commandRegister', command => {
 				for(const [guild, settings] of this.settings) {
-					if(guild !== 'global' && !(client.guilds.cache.has(guild) || client.guilds.has(guild))) continue;
+					if(guild !== 'global' && !(client.guilds.cache.has(guild) || client.guilds.cache.has(guild))) continue;
 					this.setupGuildCommand((client.guilds.cache.get(guild) || client.guilds.get(guild)), command, settings);
 				}
 			})
 			.set('groupRegister', group => {
 				for(const [guild, settings] of this.settings) {
-					if(guild !== 'global' && !(client.guilds.cache.has(guild) || client.guilds.has(guild))) continue;
+					if(guild !== 'global' && !(client.guilds.cache.has(guild) || client.guilds.cache.has(guild))) continue;
 					this.setupGuildGroup((client.guilds.cache.get(guild) || client.guilds.get(guild)), group, settings);
 				}
 			});
