@@ -9,7 +9,7 @@
 [Commando](https://github.com/Gawdl3y/discord.js-commando) is the official framework for [discord.js](https://github.com/hydrabolt/discord.js), I like how easy it is to get started with it and add own commands, types, etc. Recently I started working on a bot that required to be connected to MongoDB. I converted the default SQLLiteProvider into a provider that could use MongoDB as storage.
 
 ## Installation
->If you want to use node-mongodb-native@2.2, use commando-provider-mongo@1.0.0!
+>If you want to use Discord.js v11, use commando-provider-mongo@1.3.0!
 ```bash
 # With Yarn (recommended)
 yarn add mongodb commando-provider-mongo
