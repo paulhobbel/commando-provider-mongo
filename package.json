@@ -1,10 +1,10 @@
 {
   "name": "commando-provider-mongo",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "A MongoDB provider for Commando",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -24,8 +24,16 @@
     "url": "https://github.com/paulhobbel/commando-provider-mongo/issues"
   },
   "homepage": "https://github.com/paulhobbel/commando-provider-mongo#readme",
+  "devDependencies": {
+    "@types/mongodb": "^3.6.3",
+    "discord.js": "^12.5.1",
+    "discord.js-commando": "^0.10.0",
+    "mongodb": "^3.6.3",
+    "typescript": "^4.1.3"
+  },
   "peerDependencies": {
-    "discord.js-commando": "^0.9.0",
+    "discord.js": "^12.0.0",
+    "discord.js-commando": "^0.10.0",
     "mongodb": "^3.0"
   }
 }
