@@ -5,7 +5,7 @@ import { Db, MongoClient } from 'mongodb';
 /**
  * Uses an MongoDB collection to store settings with guilds
  */
-export default class MongoDBProvider extends SettingProvider {
+export class MongoDBProvider extends SettingProvider {
 
 	private mongoClient: MongoClient;
 

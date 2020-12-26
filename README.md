@@ -23,7 +23,7 @@ Below is an example on how to use it with [node-mongodb-native](https://github.c
 
 ```js
 const MongoClient = require('mongodb').MongoClient;
-const MongoDBProvider = require('commando-provider-mongo');
+const MongoDBProvider = require('commando-provider-mongo').MongoDBProvider;
 
 ...
 
