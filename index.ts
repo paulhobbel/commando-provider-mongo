@@ -1,5 +1,5 @@
 import { Guild } from 'discord.js';
-import { Command, CommandGroup, CommandoClient, SettingProvider, GuildExtension } from 'discord.js-commando';
+import { Command, CommandGroup, CommandoClient, SettingProvider, CommandoGuild } from 'discord.js-commando';
 import { Db, MongoClient } from 'mongodb';
 
 /**
@@ -22,7 +22,7 @@ export class MongoDBProvider extends SettingProvider {
 	/**
 	 * Listeners on the client, mapped by the event name
 	 */
-	private listeners = new Map<string, any>();
+	private listeners = new Map<any, any>();
 
 	/**
 	 * Client that the provider is for (set once the client is ready, after using {@link CommandoClient#setProvider})
@@ -69,13 +69,13 @@ export class MongoDBProvider extends SettingProvider {
 			.set('commandRegister', (command: Command) => {
 				for(const [guild, settings] of this.settings) {
 					if(guild !== 'global' && !client.guilds.cache.has(guild)) continue;
-					this.setupGuildCommand(client.guilds.cache.get(guild) as GuildExtension, command, settings);
+					this.setupGuildCommand(client.guilds.cache.get(guild) as CommandoGuild, command, settings);
 				}
 			})
 			.set('groupRegister', (group: CommandGroup) => {
 				for(const [guild, settings] of this.settings) {
 					if(guild !== 'global' && !client.guilds.cache.has(guild)) continue;
-					this.setupGuildGroup(client.guilds.cache.get(guild) as GuildExtension, group, settings);
+					this.setupGuildGroup(client.guilds.cache.get(guild) as CommandoGuild, group, settings);
 				}
 			});
 		for(const [event, listener] of this.listeners) client.on(event, listener);
@@ -148,7 +148,7 @@ export class MongoDBProvider extends SettingProvider {
 	 */
 	private setupGuild(guildId: string, settings: any) {
 		if(typeof guildId !== 'string') throw new TypeError('The guild must be a guild ID or "global".');
-		const guild = this.client!.guilds.cache.get(guildId) as GuildExtension || null;
+		const guild = this.client!.guilds.cache.get(guildId) as CommandoGuild || null;
 
 		// Load the command prefix
 		if(typeof settings.prefix !== 'undefined') {
@@ -167,7 +167,7 @@ export class MongoDBProvider extends SettingProvider {
 	 * @param command	- Command to set the status of
 	 * @param settings	- Settings of the guild
 	 */
-	private setupGuildCommand(guild: GuildExtension, command: Command, settings: any) {
+	private setupGuildCommand(guild: CommandoGuild, command: Command, settings: any) {
 		if(typeof settings[`cmd-${command.name}`] === 'undefined') return;
 
 		command.setEnabledIn(guild, settings[`cmd-${command.name}`]);
@@ -179,7 +179,7 @@ export class MongoDBProvider extends SettingProvider {
 	 * @param group		- Group to set the status of
 	 * @param settings	- Settings of the guild
 	 */
-	private setupGuildGroup(guild: GuildExtension, group: CommandGroup, settings: any) {
+	private setupGuildGroup(guild: CommandoGuild, group: CommandGroup, settings: any) {
 		if(typeof settings[`grp-${group.id}`] === 'undefined') return;
 
 		group.setEnabledIn(guild, settings[`grp-${group.id}`]);
